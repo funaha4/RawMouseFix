@@ -1,0 +1,57 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { name = "forge"; url = "https://maven.minecraftforge.net/" }
+        maven { name = "sonatype"; url = "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+version = '1.0.1'
+group = 'com.rawmousefix'
+archivesBaseName = 'RawMouseFix'
+
+minecraft {
+    version = '1.8.9-11.15.1.2318-1.8.9'
+    runDir = 'run'
+    mappings = 'stable_22'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JNA is already shipped with Minecraft 1.8.x (libraries/net/java/dev/jna/jna/3.4.0),
+    // so it only has to be on the compile classpath -- nothing is bundled into the mod jar.
+    compile 'net.java.dev.jna:jna:3.4.0'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', '1.8.9'
+    inputs.property 'modid', 'rawmousefix'
+    inputs.property 'name', 'RawMouseFix'
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    filesMatching('mcmod.info') {
+        expand(
+                version: project.version,
+                mcversion: '1.8.9',
+                modid: 'rawmousefix',
+                name: 'RawMouseFix'
+        )
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

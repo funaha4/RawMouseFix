@@ -1,0 +1,17 @@
+[
+  {
+    "modid": "${modid}",
+    "name": "${name}",
+    "description": "Replaces Minecraft 1.8.9's LWJGL2 grabbed-cursor mouse deltas with Win32 raw input, so high polling rate mice (500 Hz and above) no longer make the camera flick or speed up.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["funaha4"],
+    "credits": "Raw input via JNA, which Minecraft 1.8.9 already ships.",
+    "logoFile": "",
+    "screenshots": [],
+    "parent": "",
+    "dependencies": []
+  }
+]
